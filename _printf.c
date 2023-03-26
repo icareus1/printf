@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 
 	va_start(args, format);
-	for (; format[i] != '\0'; i++)
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -18,7 +18,6 @@ int _printf(const char *format, ...)
 			{
 			case 'c':
 				count += _putchar(va_arg(args, int));
-<<<<<<< HEAD
 				i += 2;
 				break;
 			case 's':
@@ -33,29 +32,10 @@ int _printf(const char *format, ...)
 		}
 		count += _putchar(format[i]);
 		i++;
-=======
-				break;
-			case 's':
-				count += _puts(va_arg(args, char *));
-				break;
-			case '%':
-				count += _putchar('%');
-				break;
-			default:
-				count += _putchar('%') + _putchar(format[i]);
-				break;
-			}
-		}
-		else
-		{
-			count += _putchar(format[i]);
-		}
->>>>>>> 671aca11434f84f54d209bacd1dbd0e6d2da5fd4
 	}
 	va_end(args);
 	return (count);
 }
-<<<<<<< HEAD
 /**
 * _puts - prints a string
 * @s: input string
@@ -73,6 +53,3 @@ int _puts(char *s)
 	}
 	return (i);
 }
-=======
-
->>>>>>> 671aca11434f84f54d209bacd1dbd0e6d2da5fd4
