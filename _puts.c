@@ -3,7 +3,7 @@
  * _puts - prints a string, followed by a new line, to stdout
  * @str: the string to print
  */
-void _puts(char *str)
+int _puts(char *str)
 {
 	int i = 0;
 
@@ -13,4 +13,5 @@ void _puts(char *str)
  		i++;
  	}
 	_putchar('\n');
+	return (i);
 }
