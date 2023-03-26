@@ -7,43 +7,38 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, j, len = 0, n = 2;
-	
-	func_t p[] = {{'c', print_char}, {'s', print_str},
-		};
+	int i, j, count = 0;
+	funt_t p[] = {
+		{'c', print_char},
+		{'s', print_str},
+	};
 
 	va_start(args, format);
-	if (format == NULL)
-		return (-1);
-
-	while (format[i])
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; j < n; j++)
+			i++;
+			for (j = 0; j < sizeof(p) / sizeof(p[0]); j++)
 			{
-				if (format[i + 1] == p[j].c)
+				if (format[i] == p[j].c)
 				{
-					len += p[j].f(args);
-					i += 2;
+					count += p[j].f(args);
 					break;
-				}
-				else if (format[i + 1] == '%')
-				{
-					len += _putchar('%');
-					i += 2;
-					break;
-				}
-				else if (j == (n - 1))
-				{
-					len += _putchar(format[i++]);
 				}
 			}
-			continue;
+			if (j == sizeof(p) / sizeof(p[0]))
+			{
+				count += _putchar('%');
+				count += _putchar(format[i]);
+			}
 		}
-		len += _putchar(format[i]);
-		i++;
+		else
+		{
+			count += _putchar(format[i]);
+		}
 	}
+
 	va_end(args);
-	return (len);
+	return (count);
 }
