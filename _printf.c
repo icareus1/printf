@@ -10,8 +10,8 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 
 	va_start(args, format);
-	/*if (format == NULL)
-		return (-1);*/
+	if (format == NULL)
+		return (-1);
 	for (; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
