@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - prints formatted output to stdout
  * @format: format string containing conversion specifiers
@@ -9,49 +8,26 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, count = 0;
-	char c, *s;
+	int count = 0;
 
 	va_start(args, format);
-
-	while (format[i] != '\0')
+	while (format && *format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			switch (format[i])
-			{
-			case 'c':
-				c = va_arg(args, int);
-				_putchar(c);
-				count++;
-				break;
-			case 's':
-				s = va_arg(args, char *);
-				while (*s != '\0')
-				{
-					_putchar(*s);
-					count++;
-					s++;
-				}
-				break;
-			case '%':
-				_putchar('%');
-				count++;
-				break;
-			default:
-				_putchar('%');
-				_putchar(format[i]);
-				count += 2;
-				break;
-			}
+			format++;
+			if (*format == 'c')
+				count += _putchar(va_arg(args, int));
+			else if (*format == 's')
+				count += _puts(va_arg(args, char *));
+			else if (*format == '%')
+				count += _putchar('%');
+			else
+				count += _putchar('%') + _putchar(*format);
 		}
 		else
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		i++;
+			count += _putchar(*format);
+		format++;
 	}
 	va_end(args);
 	return (count);
