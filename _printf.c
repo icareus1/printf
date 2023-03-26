@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, j, len = 0, n = 2;
+	int i = 0, j, len = 0, n = 4;
 	
 	func_t p[] = {{'c', print_char}, {'s', print_str},
 		{'d', print_int}, {'i', print_int},
