@@ -1,36 +1,48 @@
 #include "main.h"
 /**
- * print_int - Prints an integer
- * @args: argument
- *
- * Return: The number of characters printed
+ * print_d - Print decimal (Base 10) digits
+ * @args: Store the value of arguments
+ * Return: Counter print numbers
  */
-int print_int(va_list args)
+int print_d(va_list args)
 {
-	int n = va_arg(args, int);
-	int divisor = 1, i, digits = 0, last_digit, num_chars = 0;
+	unsigned int num_Absolute, aux_Num, count_Zero, count;
+	int numbers;
 
-	if (n < 0)
+	count = 0;
+
+	numbers = va_arg(args, int);
+
+	if (numbers < 0)
 	{
-		num_chars += _putchar('-');
-		n *= -1;
+		num_Absolute = (numbers * -1);
+		count += _putchar(45);
+	}
+	else
+		num_Absolute = numbers;
+
+	aux_Num = num_Absolute;
+	count_Zero = 1;
+	while (aux_Num > 9)
+	{
+		aux_Num /= 10;
+		count_Zero *= 10;
 	}
 
-	for (i = n; i > 0; i /= 10)
+	while (count_Zero >= 1)
 	{
-		digits++;
-		divisor *= 10;
+		count += _putchar(((num_Absolute / count_Zero) % 10) + '0');
+		count_Zero /= 10;
 	}
-
-	divisor /= 10;
-
-	for (i = 0; i < digits; i++)
-	{
-		last_digit = n / divisor;
-		n = n % divisor;
-		divisor /= 10;
-		num_chars += _putchar('0' + last_digit);
-	}
-
-	return (num_chars);
+	return (count);
 }
+/**
+* print_i - Print the integers
+* @args: Store list numbers
+* Return: Print numbers
+*/
+int print_i(va_list args)
+{
+	return (print_d(args));
+}
+
