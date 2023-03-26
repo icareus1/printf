@@ -30,8 +30,7 @@ int _printf(const char *format, ...)
 				break;
 			}
 		}
-		else
-			count += _putchar(format[i]);
+		count += _putchar(format[i]);
 	}
 	va_end(args);
 	return (count);
