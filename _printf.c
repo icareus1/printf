@@ -2,33 +2,38 @@
 /**
  * _printf - prints formatted output to stdout
  * @format: format string containing conversion specifiers
- *
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
+	int i = 0, count = 0;
 
 	va_start(args, format);
-	while (format && *format)
+	for (; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] == '%')
 		{
-			format++;
-			if (*format == 'c')
+			switch (format[i + 1])
+			{
+			case 'c':
 				count += _putchar(va_arg(args, int));
-			else if (*format == 's')
+				break;
+			case 's':
 				count += _puts(va_arg(args, char *));
-			else if (*format == '%')
+				break;
+			case '%':
 				count += _putchar('%');
-			else
+				break;
+			default:
 				count += _putchar('%') + _putchar(*format);
+				break;
+			}
 		}
 		else
-			count += _putchar(*format);
-		format++;
+			count += _putchar(format[i]);
 	}
 	va_end(args);
 	return (count);
 }
+
