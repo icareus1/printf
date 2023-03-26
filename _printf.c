@@ -39,23 +39,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-/**
-* _puts - prints a string
-* @s: input string
-*
-* Return: number of char
-*/
-int _puts(char *s)
-{
-	int i = 0;
-
-	if (s == NULL)
-		s = "(null)";
-	while (s[i])
-	{
-		_putchar(s[i]);
-		i++;
-	}
-	return (i);
-}
-
