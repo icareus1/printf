@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 * @s: input string
 *
 * Return: number of char
-*
+*/
 int _puts(char *s)
 {
 	int i = 0;
@@ -59,4 +59,4 @@ int _puts(char *s)
 	}
 	return (i);
 }
-*/
+
