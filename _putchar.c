@@ -8,6 +8,5 @@ int _putchar(char c)
 {
 	if (c == NULL)
 		c = "(null)";
-	else
-		return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
