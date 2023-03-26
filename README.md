@@ -1,1 +1,1 @@
-This project is a collaboration project by [Wamara Diallo](https://github.com/icareus1) and [Nnamdi Kinsgley Okonmah](https://github.com/sley-kdot), students of the ALX Software Engineering Programme, which the function named "_printf" imitates the actual "printf"
+This project is a collaboration project by [Wamara Diallo](https://github.com/icareus1) and [Nnamdi Kingsley Okonmah](https://github.com/sley-kdot), students of the ALX Software Engineering Programme, which the function named "_printf" imitates the actual "printf"
