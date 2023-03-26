@@ -6,5 +6,8 @@
 */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	if (c == NULL)
+		c = "(null)";
+	else
+		return (write(1, &c, 1));
 }
