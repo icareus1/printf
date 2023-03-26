@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i, j, count = 0;
-	funt_t p[] = {
+	func_t p[] = {
 		{'c', print_char},
 		{'s', print_str},
 	};
