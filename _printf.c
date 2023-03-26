@@ -10,32 +10,31 @@ int _printf(const char *format, ...)
 	int i = 0, count = 0;
 
 	va_start(args, format);
-
 	if (format == NULL)
 		return (-1);
-
-	while (format[i])
+	for (; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			i++;
+			switch (format[i])
 			{
-			case 'c':
-				count += _putchar(va_arg(args, int));
-				i += 2;
-				break;
-			case 's':
-				count += _puts(va_arg(args, char *));
-				i += 2;
-				break;
-			case '%':
-				count += _putchar('%');
-				i += 2;
-				break;
+				case 'c':
+					count += _putchar(va_arg(args, int));
+					break;
+				case 's':
+					count += _puts(va_arg(args, char *));
+					break;
+				case '%':
+					count += _putchar('%');
+					break;
+				default:
+					count += _putchar('%') + _putchar(format[i]);
+					break;
 			}
 		}
-		count += _putchar(format[i]);
-		i++;
+		else
+			count += _putchar(format[i]);
 	}
 	va_end(args);
 	return (count);
