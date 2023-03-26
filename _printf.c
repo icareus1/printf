@@ -26,13 +26,16 @@ int _printf(const char *format, ...)
 				count += _putchar('%');
 				break;
 			default:
-				count += _putchar('%') + _putchar(*format);
+				count += _putchar('%') + _putchar(format[i]);
 				break;
 			}
 		}
 		else
+		{
 			count += _putchar(format[i]);
+		}
 	}
 	va_end(args);
 	return (count);
 }
+
