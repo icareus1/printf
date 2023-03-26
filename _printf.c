@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	for (; format && format[i] != '\0'; i++)
+	for (; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 * @s: input string
 *
 * Return: number of char
-*/
+*
 int _puts(char *s)
 {
 	int i = 0;
@@ -59,3 +59,4 @@ int _puts(char *s)
 	}
 	return (i);
 }
+*/
