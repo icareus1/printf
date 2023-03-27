@@ -5,22 +5,28 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
-/**
-* struct print -struct for print functions
-*
-* type: type to print
-* @func: print function
-*/
-typedef struct print
-{
-	char c;
-	int (*f)(va_list);
-} func_t;
+#include <stddef.h>
 
-int _putchar(char c);
-int _printf(const char *format, ...);
-int print_char(va_list args);
-int print_str(va_list args);
-int print_i(va_list args);
-int print_d(va_list args);
+	typedef void (*print_fn_t)(va_list, int *);
+
+	print_fn_t get_print_fn(char c);
+
+	int _putchar(char c);
+
+	int _puts(char *st);
+
+	int _printf(const char *format, ...);
+
+	size_t _strlen(const char *s);
+
+	int count_digits(int n);
+
+	void print_char(va_list args, int *count);
+
+	void print_string(va_list args, int *count);
+
+	void print_integer(va_list args, int *count);
+
+	void print_percent(va_list args __attribute__((unused)), int *count);
+
 #endif

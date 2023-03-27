@@ -7,44 +7,52 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, j, len = 0, n = 4;
-	
-	func_t p[] = {{'c', print_char}, {'s', print_str},
-		{'d', print_d}, {'i', print_i},
-		};
+	int i = 0, count = 0;
+	print_fn_t print_fn;
 
 	va_start(args, format);
 	if (format == NULL)
 		return (-1);
 
-	while (format[i])
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			for (j = 0; j < n; j++)
+			i++;
+			print_fn = get_print_fn(format[i]);
+			if (print_fn == NULL)
 			{
-				if (format[i + 1] == p[j].c)
-				{
-					len += p[j].f(args);
-					i += 2;
-					break;
-				}
-				else if (format[i + 1] == '%')
-				{
-					len += _putchar('%');
-					i += 2;
-					break;
-				}
-				else if (j == (n - 1))
-				{
-					len += _putchar(format[i++]);
-				}
+				count += _putchar('%') + _putchar(format[i]);
 			}
-			continue;
+			else
+			{
+				print_fn(args, &count);
+			}
 		}
-		len += _putchar(format[i]);
-		i++;
+		else
+		{
+			count += _putchar(format[i]);
+		}
 	}
+
 	va_end(args);
-	return (len);
+	return (count);
+}
+
+print_fn_t get_print_fn(char c)
+{
+	switch (c)
+	{
+		case 'c':
+			return &print_char;
+		case 's':
+			return &print_string;
+		case 'd':
+		case 'i':
+			return &print_integer;
+		case '%':
+			return &print_percent;
+		default:
+			return NULL;
+	}
 }

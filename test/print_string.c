@@ -1,13 +1,13 @@
 #include "main.h"
 /**
- * print_char - Prints a single character to stdout
+ * print_string - Prints a string to stdout
  * @args: A va_list containing the argument to print
  * @count: A pointer to an integer keeping track of the total characters printed
  */
-void print_char(va_list args, int *count)
+void print_string(va_list args, int *count)
 {
-	char c = va_arg(args, int);
+	char *str = va_arg(args, char *);
 
-	_putchar(c);
-	*count += 1;
+	_puts(str);
+	*count += _strlen(str);
 }
