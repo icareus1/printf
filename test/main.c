@@ -6,38 +6,86 @@
  *
  * Return: Always 0
  */
+
 int main(void)
 {
-	int len;
-	int len2;
-	unsigned int ui;
-	void *addr;
+int len, len2;
+    int d = 12345;
+    int i = -6789;
+    char *s = "Hello, World!";
+    char c = 'H';
 
-	len = _printf("Let's try to printf a simple sentence.\n");
-	len2 = printf("Let's try to printf a simple sentence.\n");
-	ui = (unsigned int)INT_MAX + 1024;
-	addr = (void *)0x7ffe637541f0;
-	_printf("Length:[%d, %i]\n", len, len);
-	printf("Length:[%d, %i]\n", len2, len2);
-	_printf("Negative:[%d]\n", -762534);
-	printf("Negative:[%d]\n", -762534);
-	_printf("Unsigned:[%u]\n", ui);
-	printf("Unsigned:[%u]\n", ui);
-	_printf("Unsigned octal:[%o]\n", ui);
-	printf("Unsigned octal:[%o]\n", ui);
-	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-	printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-	_printf("Character:[%c]\n", 'H');
-	printf("Character:[%c]\n", 'H');
-	_printf("String:[%s]\n", "I am a string !");
-	printf("String:[%s]\n", "I am a string !");
-	_printf("Address:[%p]\n", addr);
-	printf("Address:[%p]\n", addr);
-	len = _printf("Percent:[%%]\n");
-	len2 = printf("Percent:[%%]\n");
-	_printf("Len:[%d]\n", len);
-	printf("Len:[%d]\n", len2);
+    /* Testing character */
+    len = _printf("Character: %c\n", c);
+    len2 = printf("Character: %c\n", c);
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing string */
+    len = _printf("String: %s\n", s);
+    len2 = printf("String: %s\n", s);
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing percentage */
+    len = _printf("Percent: %%\n");
+    len2 = printf("Percent: %%\n");
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing integer */
+    len = _printf("Integer: %d\n", d);
+    len2 = printf("Integer: %d\n", d);
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing negative integer */
+    len = _printf("Negative Integer: %d\n", i);
+    len2 = printf("Negative Integer: %d\n", i);
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing NULL string */
+   _printf("String: %\0\n");
+
+    /* Testing multiple conversions */
+    len = _printf("Multiple conversions: %c %s %d %%\n", c, s, d);
+    len2 = printf("Multiple conversions: %c %s %d %%\n", c, s, d);
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+    /* Testing unknown conversion specifier */
 	_printf("Unknown:[%r]\n");
-	printf("Unknown:[%r]\n");
-	return (0);
+	printf("Unknown:[r]\n");
+    if (len == len2)
+        printf("Lengths match: %d\n", len);
+    else
+        printf("Lengths do not match: %d and %d\n", len, len2);
+
+if (len == len2)
+printf("Lengths match: %d\n", len);
+else
+printf("Lengths do not match: %d and %d\n", len, len2);
+/* Testing pointer conversion specifier */
+len = _printf("Pointer: %p\n", (void *)0x12345678);
+len2 = printf("Pointer: %p\n", (void *)0x12345678);
+if (len == len2)
+    printf("Lengths match: %d\n", len);
+else
+    printf("Lengths do not match: %d and %d\n", len, len2);
+
+return (0);
 }
+

@@ -57,7 +57,7 @@ print_fn_t get_print_fn(char c)
 		case '%':
 			return (&print_percent);
 		case '\0':
-			return (NULL);
+			return (&print_null);
 		default:
 			return (NULL);
 	}

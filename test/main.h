@@ -29,4 +29,6 @@
 
 	void print_percent(va_list args __attribute__((unused)), int *count);
 
+	void print_null(va_list args __attribute__((unused)), int *count);
+
 #endif
