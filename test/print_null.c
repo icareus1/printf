@@ -5,7 +5,8 @@
  * @count: keeps track of the total characters printed
  * Return: -1 since it's null
  */
-int print_null(va_list args __attribute__((unused)), int *count __attribute__((unused)))
+int print_null(va_list args __attribute__((unused)), int *count)
 {
+	count += 0;
 	return (-1);
 }
