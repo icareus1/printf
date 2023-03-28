@@ -24,4 +24,6 @@ int print_str(va_list args);
 int print_i(va_list args);
 int print_d(va_list args);
 int print_null(va_list args __attribute__((unused)));
+int print_bin(va_list args);
+
 #endif
