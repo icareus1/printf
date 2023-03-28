@@ -9,6 +9,8 @@ int print_string(va_list args, int *count)
 {
 	char *str = va_arg(args, char *);
 
+	if (str == NULL)
+		str = "(null)";
 	_puts(str);
 	*count += _strlen(str);
 	return (0);

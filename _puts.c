@@ -3,7 +3,7 @@
 * _puts - prints a string
 * @st: input string
 *
-* Return: i
+* Return: 0 on success
 */
 int _puts(char *st)
 {
