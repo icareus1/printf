@@ -3,8 +3,9 @@
  * print_integer - Prints an integer to stdout
  * @args: A va_list containing the argument to print
  * @count: keeps track of the total characters printed
+ * Return: 0 on success
  */
-void print_integer(va_list args, int *count)
+int print_integer(va_list args, int *count)
 {
 	int num = va_arg(args, int);
 	int i;
@@ -36,4 +37,5 @@ void print_integer(va_list args, int *count)
 			*count += 1;
 		}
 	}
+	return (0);
 }
