@@ -8,7 +8,7 @@
 int print_bin(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
-	int i, len = 0; binary[32];
+	int i, len = 0, binary[32];
 
 	if (n == 0)
 	{
