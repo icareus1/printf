@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int i = 0, j, len = 0, n = 5;
 	
 	func_t p[] = {{'c', print_char}, {'s', print_str},
-		{'d', print_d}, {'i', print_i}, {NULL, NULL},
+		{'d', print_d}, {'i', print_i}, {'\0', NULL},
 		};
 
 	va_start(args, format);
