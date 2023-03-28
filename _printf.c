@@ -7,10 +7,10 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, j, len = 0, n = 5;
-	
-	func_t p[] = {{'c', print_char}, {'s', print_str},
-		{'d', print_d}, {'i', print_i}, {'\0', NULL},
+	int i = 0, j, len = 0, n = 4;
+
+	func_t p[] = {{'c', print_char}, {'s', print_str}, {'d', print_d},
+		 {'i', print_i},
 		};
 
 	va_start(args, format);
@@ -37,13 +37,16 @@ int _printf(const char *format, ...)
 				}
 				else if (j == (n - 1))
 				{
+					if (format[i + 1] == '\0')
+						return (-1);
 					len += _putchar(format[i++]);
+					if (format[i] == '%')
+						i++;
 				}
 			}
 			continue;
 		}
-		len += _putchar(format[i]);
-		i++;
+		len += _putchar(format[i++]);
 	}
 	va_end(args);
 	return (len);
