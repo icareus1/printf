@@ -3,18 +3,18 @@
 * _puts - prints a string
 * @st: input string
 *
-* Return: 0 on success
+* Return: i
 */
 int _puts(char *st)
 {
 	int i = 0;
 
 	if (st == NULL)
-		return (-1);
+		st = "(null)";
 	while (st[i])
 	{
 		_putchar(st[i]);
 		i++;
 	}
-	return (0);
+	return (i);
 }
