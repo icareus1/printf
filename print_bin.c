@@ -20,7 +20,7 @@ int print_bin(va_list args)
 		binary[i] = (n % 2);
 		n /= 2;
 	}
-	for (i = i - 1; i >= 0; i--)
+	for (--i; i >= 0; i--)
 	{
 		len += _putchar(binary[i] + '0');
 	}
