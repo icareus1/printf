@@ -22,7 +22,6 @@ int _printf(const char *format, ...)
 			if (print_fn == NULL)
 			{
 				count += _putchar('%') + _putchar(format[i]);
-				return (-1);
 			}
 			else
 			{

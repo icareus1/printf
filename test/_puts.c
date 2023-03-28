@@ -3,14 +3,14 @@
 * _puts - prints a string
 * @st: input string
 *
-* Return: number of char
+* Return: 0 on success
 */
 int _puts(char *st)
 {
 	int i = 0;
 
 	if (st == NULL)
-		st = "(null)";
+		return (-1);
 	while (st[i])
 	{
 		_putchar(st[i]);
